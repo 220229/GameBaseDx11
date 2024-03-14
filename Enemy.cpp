@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "Engine/Model.h"
 #include "Engine/SphereCollider.h"
+#include "Engine/SceneManager.h"
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
@@ -41,7 +42,7 @@ void Enemy::Draw()
 void Enemy::Release()
 {
 }
-
+int kill = 0;
 //何かに当たった
 void Enemy::OnCollision(GameObject* pTarget)
 {
@@ -51,5 +52,12 @@ void Enemy::OnCollision(GameObject* pTarget)
 	{
 		this->KillMe();
 		pTarget->KillMe();
+		kill = kill + 1;
+	}
+	if (kill >= 7)
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_CLEAR);
+		kill = 0;
 	}
 }
