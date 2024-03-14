@@ -5,7 +5,7 @@
 
 //ƒRƒ“ƒXƒgƒ‰ƒNƒ^
 BulletP::BulletP(GameObject* parent)
-    :GameObject(parent, "BulletP"), hModel_(-1)
+	:GameObject(parent, "BulletP"), hModel_(-1)
 {
 }
 
@@ -28,7 +28,7 @@ void BulletP::Initialize()
 void BulletP::Update()
 {
 
-	transform_.position_.x += 0.2;
+	transform_.position_.x += 0.5;
 }
 
 //•`‰æ
@@ -49,6 +49,12 @@ void BulletP::OnCollision(GameObject* pTarget)
 	//“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
 	//“G‚É“–‚½‚Á‚½‚Æ‚«
 	if (pTarget->GetObjectName() == "Enemy")
+	{
+		this->KillMe();
+		pTarget->KillMe();
+	}
+	//’e‚É“–‚½‚Á‚½‚Æ‚«
+	if (pTarget->GetObjectName() == "BulletE")
 	{
 		this->KillMe();
 		pTarget->KillMe();

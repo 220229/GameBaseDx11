@@ -104,6 +104,8 @@
     <ClCompile Include="TitleLogo.cpp" />
     <ClCompile Include="ClearScene.cpp" />
     <ClCompile Include="ClearLogo.cpp" />
+    <ClCompile Include="GameoverScene.cpp" />
+    <ClCompile Include="GameoverLogo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -184,6 +186,8 @@
     <ClInclude Include="TitleLogo.h" />
     <ClInclude Include="ClearScene.h" />
     <ClInclude Include="ClearLogo.h" />
+    <ClInclude Include="GameoverScene.h" />
+    <ClInclude Include="GameoverLogo.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

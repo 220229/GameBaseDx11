@@ -10,7 +10,7 @@
 
 
 PlayScene::PlayScene(GameObject* parent)
-	:GameObject(parent, "PlayScene")
+	:GameObject(parent, "PlayScene"), pText(nullptr)
 {
 }
 
@@ -26,11 +26,11 @@ void PlayScene::Initialize()
 		Instantiate<Enemy>(this);
 	}
 
-
-
-
 	Camera::SetPosition(XMFLOAT3(0, 0, -40));
 	Camera::SetTarget(XMFLOAT3(0, 0, 0));
+
+	pText = new Text;
+	pText->Initialize();
 }
 
 void PlayScene::Update()
@@ -40,6 +40,10 @@ void PlayScene::Update()
 
 void PlayScene::Draw()
 {
+	pText->Draw(30, 30, "    W:UP");
+	pText->Draw(30, 60, "    S:DOWN");
+	pText->Draw(30, 90, "SPACE:SHOT");
+
 }
 
 void PlayScene::Release()

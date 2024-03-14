@@ -3,6 +3,9 @@
 #include "Engine/Input.h"
 #include "BulletP.h"
 #include "Engine/SphereCollider.h"
+#include "BulletE.h"
+#include "Enemy.h"
+#include "Engine/SceneManager.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -21,12 +24,12 @@ void Player::Initialize()
     //モデルデータのロード
     hModel_ = Model::Load("Model\\Player.fbx");
     assert(hModel_ >= 0);
-    transform_.position_.x = -10;
+    transform_.position_.x = -13;
     SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 1.2f);
     AddCollider(collision);
 
 }
-float spowncooldown = 0;
+
 //更新
 void Player::Update()
 {
@@ -48,11 +51,15 @@ void Player::Update()
         BulletP* p = Instantiate<BulletP>(this->GetParent());
         p->SetPosition(this->transform_.position_);//プレイヤーの位置
     }
-    if (Input::IsKeyDown(DIK_SPACE))
+    if (transform_.position_.y < -15.0)
     {
-        BulletP* p = Instantiate<BulletP>(this->GetParent());
-        p->SetPosition(this->transform_.position_);//プレイヤーの位置
+        transform_.position_.y = -15;
     }
+    if (transform_.position_.y > 15.0)
+    {
+        transform_.position_.y = 15;
+    }
+
 }
 
 //描画
@@ -65,4 +72,18 @@ void Player::Draw()
 //開放
 void Player::Release()
 {
+}
+
+//何かに当たった
+void Player::OnCollision(GameObject* pTarget)
+{
+    //当たったときの処理
+    //弾に当たったとき
+    if (pTarget->GetObjectName() == "BulletE")
+    {
+        this->KillMe();
+        pTarget->KillMe();
+        SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+        pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+    }
 }

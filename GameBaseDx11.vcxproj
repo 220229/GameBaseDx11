@@ -153,6 +153,8 @@
     <ClCompile Include="Engine\Text.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
+    <ClCompile Include="GameoverLogo.cpp" />
+    <ClCompile Include="GameoverScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="TitleLogo.cpp" />
@@ -187,6 +189,8 @@
     <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
+    <ClInclude Include="GameoverLogo.h" />
+    <ClInclude Include="GameoverScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="TitleLogo.h" />

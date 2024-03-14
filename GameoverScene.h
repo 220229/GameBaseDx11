@@ -3,16 +3,16 @@
 #include "Engine/Text.h"
 
 
-
 //■■シーンを管理するクラス
-class ClearScene : public GameObject
+class GameoverScene : public GameObject
 {
 private:
 	Text* pText;
+
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	ClearScene(GameObject* parent);
+	GameoverScene(GameObject* parent);
 
 	//初期化
 	void Initialize() override;
@@ -26,4 +26,3 @@ public:
 	//開放
 	void Release() override;
 };
-

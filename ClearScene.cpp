@@ -5,7 +5,7 @@
 
 //コンストラクタ
 ClearScene::ClearScene(GameObject* parent)
-	: GameObject(parent, "ClearScene")
+	: GameObject(parent, "ClearScene"), pText(nullptr)
 {
 }
 
@@ -13,6 +13,9 @@ ClearScene::ClearScene(GameObject* parent)
 void ClearScene::Initialize()
 {
 	Instantiate<ClearLogo>(this);
+
+	pText = new Text;
+	pText->Initialize();
 }
 
 //更新
@@ -28,6 +31,7 @@ void ClearScene::Update()
 //描画
 void ClearScene::Draw()
 {
+	pText->Draw(540, 540, "SPACE:TITLE");
 }
 
 //開放

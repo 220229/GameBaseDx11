@@ -5,7 +5,7 @@
 
 //コンストラクタ
 TitleScene::TitleScene(GameObject* parent)
-	: GameObject(parent, "TitleScene")
+	: GameObject(parent, "TitleScene"), pText(nullptr)
 {
 }
 
@@ -13,6 +13,9 @@ TitleScene::TitleScene(GameObject* parent)
 void TitleScene::Initialize()
 {
 	Instantiate<TitleLogo>(this);
+
+	pText = new Text;
+	pText->Initialize();
 }
 
 //更新
@@ -28,6 +31,7 @@ void TitleScene::Update()
 //描画
 void TitleScene::Draw()
 {
+	pText->Draw(540, 540, "SPACE:START");
 }
 
 //開放
